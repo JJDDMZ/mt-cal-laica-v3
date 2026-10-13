@@ -1,0 +1,22 @@
+{
+  "dual_game_greedy.json": {
+    "archive_relative_path": "runs_v3/main/strict/seed0/eval_retry1/dual_game_greedy.json",
+    "original_sha256": "27e411c2e31e8bdd8058699d43418c986d7c7a8765202fc5da9a4c937f4d7a46",
+    "transformation": "Only replace original workstation path prefix with repository-relative paths; all metrics unchanged."
+  },
+  "completed_audit.json": {
+    "archive_relative_path": "runs_v3/main/strict/seed0/eval_retry1/completed_audit.json",
+    "original_sha256": "3f8968aed51f9965c6a16b55a45301b3b7f0c1498f41828126853762493a2c5c",
+    "transformation": "Only replace original workstation path prefix with repository-relative paths; all metrics unchanged."
+  },
+  "baseline-Flappybird.json": {
+    "archive_relative_path": "runs_v3/baselines/Flappybird/seed0/eval/eval_Flappybird_greedy.json",
+    "original_sha256": "7f7225e788109aaeb5b03b05777e978f20723096e2fb32733d5872a9b65b5fe8",
+    "transformation": "Only replace original workstation path prefix with repository-relative paths; all metrics unchanged."
+  },
+  "baseline-Timberman.json": {
+    "archive_relative_path": "runs_v3/baselines/Timberman/seed0/eval/eval_Timberman_greedy.json",
+    "original_sha256": "2993ae0d735082fbb69cd8d8505ffdff3338ba115a08c1db0752fd888c4a3a52",
+    "transformation": "Only replace original workstation path prefix with repository-relative paths; all metrics unchanged."
+  }
+}

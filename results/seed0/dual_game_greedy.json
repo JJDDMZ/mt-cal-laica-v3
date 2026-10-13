@@ -1,0 +1,113 @@
+{
+  "checkpoint": "runs_v3/main/strict/seed0/stage_Timberman.pt",
+  "checkpoint_sha256": "143d08ec214888b9e99370514ba3ed872b3ea692b39835420df9820f6b4f61ae",
+  "model_hash": "69ebddce6d78c85a2a8e63fcd9cee7a6e4167a01b77cd51fce6184b41386d721",
+  "protocol": "wemi-rt-v1",
+  "clock_mode": "realtime-v1",
+  "seed": 0,
+  "schedule": "strict",
+  "identity_hash": "d204186fd31676c6280688173fdf04d88ead98165261c8e02c55ccc39492b006",
+  "config_path": "wemi_cal/configs/mt_cal.yaml",
+  "baselines": {
+    "Flappybird": {
+      "report_path": "runs_v3/baselines/Flappybird/seed0/eval/eval_Flappybird_greedy.json",
+      "score_mean": 56.5
+    },
+    "Timberman": {
+      "report_path": "runs_v3/baselines/Timberman/seed0/eval/eval_Timberman_greedy.json",
+      "score_mean": 674.36
+    }
+  },
+  "steps": 50000,
+  "episodes_per_game": 50,
+  "policy_mode": "greedy",
+  "games": {
+    "Flappybird": {
+      "game": "Flappybird",
+      "policy_mode": "greedy",
+      "episodes": 50,
+      "score_mean": 56.62,
+      "score_median": 57.0,
+      "score_std": 0.4853864439804639,
+      "score_max": 57.0,
+      "pass_count": 50,
+      "pass_rate": 1.0,
+      "return_mean": 913.3216902780498,
+      "length_mean": 1000.0,
+      "terminations": {
+        "horizon": 50
+      },
+      "truncated_count": 0,
+      "token_counts": {
+        "0": 37977,
+        "1": 12023
+      },
+      "token_share": {
+        "0": 0.75954,
+        "1": 0.24046
+      }
+    },
+    "Timberman": {
+      "game": "Timberman",
+      "policy_mode": "greedy",
+      "episodes": 50,
+      "score_mean": 831.92,
+      "score_median": 832.0,
+      "score_std": 8.1014566591447,
+      "score_max": 852.0,
+      "pass_count": 50,
+      "pass_rate": 1.0,
+      "return_mean": 831.92,
+      "length_mean": 1000.0,
+      "terminations": {
+        "horizon": 50
+      },
+      "truncated_count": 0,
+      "token_counts": {
+        "2": 25684,
+        "3": 24316
+      },
+      "token_share": {
+        "2": 0.51368,
+        "3": 0.48632
+      }
+    }
+  },
+  "acceptance": {
+    "Flappybird": {
+      "game": "Flappybird",
+      "passed_absolute": true,
+      "passed_relative": true,
+      "score_mean": 56.62,
+      "pass_rate": 1.0,
+      "required_pass_count": 40,
+      "relative_evidence_available": true,
+      "st_baseline_mean": 56.5,
+      "passed": true,
+      "relative_ratio": 1.0021238938053096,
+      "relative_threshold": 0.8
+    },
+    "Timberman": {
+      "game": "Timberman",
+      "passed_absolute": true,
+      "passed_relative": true,
+      "score_mean": 831.92,
+      "pass_rate": 1.0,
+      "required_pass_count": 40,
+      "relative_evidence_available": true,
+      "st_baseline_mean": 674.36,
+      "passed": true,
+      "relative_ratio": 1.2336437511121656,
+      "relative_threshold": 0.8
+    }
+  },
+  "model_object_id": 6072299344,
+  "model_hash_after": "69ebddce6d78c85a2a8e63fcd9cee7a6e4167a01b77cd51fce6184b41386d721",
+  "parameter_hash_before": "bdb091519d13780a01bc46e979dfb6a9cfab1dbe113a06edad9181d4fa245925",
+  "parameter_hash_after": "bdb091519d13780a01bc46e979dfb6a9cfab1dbe113a06edad9181d4fa245925",
+  "private_generators_unchanged": true,
+  "global_rng_unchanged": true,
+  "state_dict_unchanged": true,
+  "optimizer_steps": 0,
+  "port": 7911
+}

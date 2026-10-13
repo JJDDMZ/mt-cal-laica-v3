@@ -1,0 +1,145 @@
+{
+  "spec_version": 1,
+  "upstream_commit": "5970399a0e8f1c29ed2da5b453606a323136882d",
+  "archives": {
+    "Flappybird": {
+      "path": "vchat_minigame/vchat_Flappybird.zip",
+      "sha256": "045016f683737a1070fb45eb06ad87551cc47bf0f11a5b2c6e5c88a6b78d258e",
+      "output": "wechat_games_rt/Flappybird",
+      "cal_output": "wechat_games_cal/Flappybird",
+      "patches": {
+        "lib/wxbird.js": {
+          "normalize_newlines": true,
+          "operations": [
+            {
+              "old": "connectSoket('ws://localhost:7891');",
+              "new": "connectSoket('ws://localhost:7911');",
+              "count": 1
+            },
+            {
+              "old": "var obs=[bird.by, down_pipe.py, up_pipe.pheight];",
+              "new": "// 最小改动（仅观测）：额外回传 up_pipe.px 与 score，\n    // 否则 Python 侧无法判定\"是否飞过一组管道\"，原版只把分数画在画布上。\n    var obs=[bird.by, down_pipe.py, up_pipe.pheight, up_pipe.px, score];",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "project_config": {
+        "appid": "touristappid",
+        "projectname": "Flappybird",
+        "isGameTourist": true,
+        "libVersion": "3.17.3"
+      }
+    },
+    "Timberman": {
+      "path": "vchat_minigame/vchat_Timberman.zip",
+      "sha256": "f97f0c18407c44509e349ce449d03cb74ac796af41a6c59e6256c9c4e6b4e902",
+      "output": "wechat_games_rt/Timberman",
+      "cal_output": "wechat_games_cal/Timberman",
+      "patches": {
+        "js/main.js": [
+          {
+            "old": "this.connectSocket('ws://localhost:7891')",
+            "new": "this.connectSocket('ws://localhost:7911')",
+            "count": 1
+          }
+        ]
+      },
+      "project_config": {
+        "appid": "touristappid",
+        "projectname": "Timberman",
+        "isGameTourist": true,
+        "libVersion": "3.17.3"
+      }
+    }
+  },
+  "python_sources": {
+    "BottleJump.py": {
+      "input_sha256": "d86b95b7f09c23d93ea6286389a42e226d08ea05f5a19f744e2df98885affa98",
+      "output_sha256": "d86b95b7f09c23d93ea6286389a42e226d08ea05f5a19f744e2df98885affa98"
+    },
+    "Flappybird.py": {
+      "input_sha256": "7d35fdaf3806cb705bb234479888fa5ed465aee7028bca4e953c2c171fa14123",
+      "output_sha256": "7d35fdaf3806cb705bb234479888fa5ed465aee7028bca4e953c2c171fa14123"
+    },
+    "Game2048.py": {
+      "input_sha256": "dd9786e01f778f923633dbcf2afc7b0582f959b0da62cefffbf7bc8bf8a9161d",
+      "output_sha256": "dd9786e01f778f923633dbcf2afc7b0582f959b0da62cefffbf7bc8bf8a9161d"
+    },
+    "GreedySnake.py": {
+      "input_sha256": "cfc0f204bf03481f3e13dda69675009cf1e1211e809e66c88a15c4d827e6a5e4",
+      "output_sha256": "cfc0f204bf03481f3e13dda69675009cf1e1211e809e66c88a15c4d827e6a5e4"
+    },
+    "PlaneWar.py": {
+      "input_sha256": "85ec029b8d81882477742ff27b9a7be8b7bceeb4b9957c1f16970e943d61dbd3",
+      "output_sha256": "c08de6dbf4891af4c69a9d095a8c02cb1a34086c6cec22de98f2c95285902a1e",
+      "patches": [
+        {
+          "old": "from websocket_server import WebsocketServer\r\n",
+          "new": "from websocket_server import WebsocketServer\r\nimport gym\r\nfrom gym import spaces\r\n",
+          "count": 1
+        }
+      ]
+    },
+    "Timberman.py": {
+      "input_sha256": "f65925d4cafdcceafc74f66229cbfb64646a1c992ab2211484c2d627b1781d4b",
+      "output_sha256": "371b14a32ae3f277015cef6dd126ec9d67af5c90997693a577389e0e000a9e31",
+      "normalize_newlines": true,
+      "patches": [
+        {
+          "old": "        print(\"重新开始\")\n",
+          "new": "",
+          "count": 1
+        },
+        {
+          "old": "        print(\"obs: \", obs)\n",
+          "new": "",
+          "count": 1
+        },
+        {
+          "old": "            print(msg)\n",
+          "new": "",
+          "count": 1
+        }
+      ]
+    },
+    "WemiEnv.py": {
+      "input_sha256": "e26e88de402d27b38f3fd96315cdde1bb7224c764b2cb61e222cf72954b6f244",
+      "output_sha256": "7af3bb14b5a619967e4b97895ed501f3dfea6bd816f214dbd66232f053cf3993",
+      "patches": [
+        {
+          "old": "import Flappybird, BottleJump, Game2048, PlaneWar\r\n",
+          "new": "import Flappybird, BottleJump, Game2048, PlaneWar\r\nimport GreedySnake, Timberman\r\n",
+          "count": 1
+        },
+        {
+          "old": "    if Env_name == 'PlaneWar':\r\n        env = PlaneWar.PlaneWarEnv()\r\n",
+          "new": "    if Env_name == 'PlaneWar':\r\n        env = PlaneWar.PlaneWarEnv()\r\n    if Env_name == 'Snake':\r\n        env = GreedySnake.GreedySnake()\r\n    if Env_name == 'Timberman':\r\n        env = Timberman.Timberman()\r\n",
+          "count": 1
+        }
+      ]
+    },
+    "interact.py": {
+      "input_sha256": "fbcdc6deb94f8a48c5dfa83ce3047f86f9a01852620ac8d4705ba0103e32b491",
+      "output_sha256": "fbcdc6deb94f8a48c5dfa83ce3047f86f9a01852620ac8d4705ba0103e32b491"
+    }
+  },
+  "runtime": {
+    "python_output_dir": "WemiEnv/WemiEnv",
+    "fixture_overlay": "tests/runtime-fixtures",
+    "fixture_overlay_target": "wechat_games_cal",
+    "manifest": "runtime-manifest.json",
+    "no_overwrite": [
+      "WemiEnv",
+      "wechat_games_rt",
+      "wechat_games_cal"
+    ],
+    "generated_cal_files": {
+      "Flappybird/lib/wxbird.js": {
+        "sha256": "77d6a20dc95826bb2307c41da54e51843cbd0ccb8c216ac30c2979cdf3129ceb",
+        "content": "/**\n * Flappybird lockstep 运行时（技术方案 §4.2/§4.3/§5.2）。\n *\n * 与原 wxbird.js 的差别：\n *  - 物理不再由 setInterval 驱动；每次收到 `op=step` 才推进固定 tick 数；\n *  - 观测换成主 schema 的命名字段（bird_y/gap_top/gap_bottom/pipe_x）；\n *  - score 是原始累计游戏分数，reward 留给 Python 侧统一计算（§4.2）；\n *  - 渲染是独立的 60fps 循环，只读状态，绝不推进逻辑。\n */\n\n'use strict';\n\nvar envcore = require('./envcore.js');\nvar wemical = require('./wemical.js');\n\nvar WORLD_WIDTH = envcore.WORLD_WIDTH;\nvar WORLD_HEIGHT = envcore.WORLD_HEIGHT;\nvar GROUND_Y = envcore.GROUND_Y;\nvar TICKS_PER_STEP = 3;              // §4.3：一次 agent step 最多 3 个物理 tick\n\nfunction WxBirdRuntime(opts) {\n    opts = opts || {};\n    this.ctx = opts.ctx;\n    this.canvasId = opts.id || 'birdId';\n    this.width = opts.width || WORLD_WIDTH;\n    this.height = opts.height || WORLD_HEIGHT;\n    this.serverUrl = opts.serverUrl || 'ws://localhost:17911';\n    this.deathReason = 'none';\n\n    this.engine = new envcore.FlappyEngine(1);\n    // 小游戏/小程序的 ctx.drawImage 需要 Image 对象，不能传路径字符串。\n    // 原版 wxbird.js 也是先 new Image()（在 Background/Bird 构造里）再画。\n    var base = opts.imageBase || '../../images/';\n    this.images = {\n        bg: this._loadImage(base + 'bg.png'),\n        ground: this._loadImage(base + 'ground.png'),\n        pipe: this._loadImage(base + 'pipe.png'),\n        birds: [this._loadImage(base + '0.gif'), this._loadImage(base + '1.gif'),\n                this._loadImage(base + '2.gif')]\n    };\n    this.birdIndex = 0;\n\n    var self = this;\n    this.client = new wemical.WemiCalClient({\n        gameId: 'Flappybird',\n        url: this.serverUrl,\n        envHash: opts.envHash || 'flappybird-lockstep-v1',\n        onRequest: function (msg) { return self._onRequest(msg); }\n    });\n    this.client.connect();\n    // render:false 时不起渲染循环（Node 测试用），逻辑不受影响\n    if (opts.render !== false) { this._startRenderLoop(); }\n}\n\nWxBirdRuntime.prototype._loadImage = function (src) {\n    var img = new Image();\n    img.src = src;\n    return img;\n};\n\n// ---------------------------------------------------------------- 请求处理\nWxBirdRuntime.prototype._onRequest = function (msg) {\n    if (msg.op === 'reset') {\n        var seed = (msg.seed === undefined || msg.seed === null) ? 1 : msg.seed;\n        this.engine.reset(seed);\n        this.deathReason = 'none';\n        return this._snapshot(false, 'none');\n    }\n    if (msg.op === 'step') {\n        var action = msg.action;\n        if (action !== 0 && action !== 1) {\n            // 非法动作不 clamp：直接抛出，让 Python 侧看到协议错误\n            throw new Error('Flappybird 非法动作: ' + action);\n        }\n        var r = this.engine.stepLockstep(action, TICKS_PER_STEP);\n        var reason = 'none';\n        if (r.dead) {\n            reason = this._deathReason();\n            this.deathReason = reason;\n        }\n        return this._snapshot(r.dead, reason);\n    }\n    throw new Error('未知 op: ' + msg.op);\n};\n\n/** 碰撞原因：落地 vs 撞管道（§4.2 的 termination_reason 枚举）。 */\nWxBirdRuntime.prototype._deathReason = function () {\n    var b = this.engine.bird;\n    if (b.by + b.bheight > GROUND_Y) { return 'ground'; }\n    return 'collision';\n};\n\n/** 主 schema 的 4 个命名字段（§5.2）。 */\nWxBirdRuntime.prototype._observation = function () {\n    var e = this.engine;\n    return {\n        bird_y: e.bird.by / WORLD_HEIGHT,\n        gap_top: e.up_pipe.pheight / WORLD_HEIGHT,\n        gap_bottom: e.down_pipe.py / WORLD_HEIGHT,\n        pipe_x: e.up_pipe.px / WORLD_WIDTH\n    };\n};\n\nWxBirdRuntime.prototype._snapshot = function (terminated, reason) {\n    var e = this.engine;\n    return {\n        obs: this._observation(),\n        score: e.score,                       // 原始累计分数，不是训练奖励\n        terminated: !!terminated,\n        terminationReason: reason,\n        simTicks: e.ticks\n    };\n};\n\n// ---------------------------------------------------------------- 渲染（只读）\n//\n// 渲染节流到 **25fps（40ms）**，与原版 setInterval(..., 40) 同节奏：\n// 在真机上 step 之间的墙钟只有 ~0.3ms，若不节流，画面会以几千帧/秒狂刷，\n// 看起来像小鸟在瞬移（\"速度非常快\"）。逻辑时钟不受这里影响——它只由 op=step 驱动。\nvar RENDER_INTERVAL_MS = 40;\n\nWxBirdRuntime.prototype._startRenderLoop = function () {\n    var self = this;\n    function frame() {\n        try {\n            self._render();\n        } catch (err) {\n            console.error('[flappy] render error: ' + (err && err.stack ? err.stack : err));\n        }\n        setTimeout(frame, RENDER_INTERVAL_MS);\n    }\n    setTimeout(frame, RENDER_INTERVAL_MS);\n};\n\nWxBirdRuntime.prototype._render = function () {\n    var e = this.engine;\n    var ctx = this.ctx;\n    ctx.clearRect(0, 0, this.width, this.height);\n    ctx.drawImage(this.images.bg, 0, 0, this.width, this.height);\n    ctx.drawImage(this.images.pipe, 150, 500, 150, 800,\n                  e.up_pipe.px, e.up_pipe.py, e.up_pipe.pwidth, e.up_pipe.pheight);\n    ctx.drawImage(this.images.pipe, 0, 500, 150, 500,\n                  e.down_pipe.px, e.down_pipe.py, e.down_pipe.pwidth, e.down_pipe.pheight);\n    ctx.drawImage(this.images.ground, 0, GROUND_Y, this.width, 200);\n    this.birdIndex = (this.birdIndex + 1) % 3;\n    ctx.drawImage(this.images.birds[this.birdIndex],\n                  e.bird.bx, e.bird.by, e.bird.bwidth, e.bird.bheight);\n    ctx.setFillStyle('#ffffff');\n    ctx.setFontSize(30);\n    if (e.score > 0) { ctx.fillText(String(e.score), 180, 100); }\n    if (e.stoped) {\n        ctx.setFontSize(24);\n        ctx.fillText('score: ' + e.score, 120, 160);\n    }\n    // 一次性提交绘制操作\n    if (typeof ctx.getActions === 'function') {\n        wx.drawCanvas({ canvasId: this.canvasId, actions: ctx.getActions() });\n    }\n};\n\nmodule.exports = { WxBirdRuntime: WxBirdRuntime, TICKS_PER_STEP: TICKS_PER_STEP };\n",
+        "source": "project-authored adapter; byte-identical to the successful archive runtime"
+      }
+    }
+  }
+}

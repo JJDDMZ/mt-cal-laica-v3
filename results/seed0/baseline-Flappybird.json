@@ -1,0 +1,28 @@
+{
+  "game": "Flappybird",
+  "policy_mode": "greedy",
+  "episodes": 50,
+  "score_mean": 56.5,
+  "score_median": 56.5,
+  "score_std": 0.5,
+  "score_max": 57.0,
+  "pass_count": 50,
+  "pass_rate": 1.0,
+  "return_mean": 910.2671577279204,
+  "length_mean": 1000.0,
+  "terminations": {
+    "horizon": 50
+  },
+  "truncated_count": 0,
+  "token_counts": {
+    "0": 37985,
+    "1": 12015
+  },
+  "token_share": {
+    "0": 0.7597,
+    "1": 0.2403
+  },
+  "param_hash_unchanged": true,
+  "ckpt": "runs_v3/baselines/Flappybird/seed0/stage_Flappybird.pt",
+  "variant": "continuous"
+}

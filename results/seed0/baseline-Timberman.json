@@ -1,0 +1,29 @@
+{
+  "game": "Timberman",
+  "policy_mode": "greedy",
+  "episodes": 50,
+  "score_mean": 674.36,
+  "score_median": 670.0,
+  "score_std": 42.608806601452706,
+  "score_max": 770.0,
+  "pass_count": 50,
+  "pass_rate": 1.0,
+  "return_mean": 674.2,
+  "length_mean": 995.06,
+  "terminations": {
+    "horizon": 42,
+    "collision": 8
+  },
+  "truncated_count": 0,
+  "token_counts": {
+    "2": 25273,
+    "3": 24480
+  },
+  "token_share": {
+    "2": 0.5079693686812855,
+    "3": 0.49203063131871444
+  },
+  "param_hash_unchanged": true,
+  "ckpt": "runs_v3/baselines/Timberman/seed0/stage_Timberman.pt",
+  "variant": "continuous"
+}

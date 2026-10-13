@@ -1,0 +1,86 @@
+# wemi_cal 主配置（技术方案第 10 节）
+# variant / schedule / mode 三个维度独立，加载时校验，并完整写入 checkpoint。
+experiment: mt_cal_laica_v2
+schema_version: 2
+variant: continuous
+schedule: strict
+mode: full
+seed: 0
+device: cpu
+torch_threads: 1
+
+env:
+  protocol: wemi-cal-v1
+  clock_mode: lockstep-v1
+  obs_schema: compact29-v1
+  reward_schema: bounded-v1
+  horizon: 1000
+  host: 127.0.0.1
+  ports: {Flappybird: 17911, Timberman: 17912}
+  connect_timeout_s: 60
+  step_timeout_s: 5
+  flappy_ticks_per_step: 3
+  timber_ticks_per_step: 6
+
+continuous:
+  latent_dim: 2
+  hidden_sizes: [64, 64]
+  decoder: linear_softmax
+  decoder_behavior_uniform_mix: 0.02
+  log_std_min: -5.0
+  log_std_max: 2.0
+  kl_weight: 0.001
+  repr_lr: 0.001
+  importance_correction: exact_decoder_ratio
+  importance_clip: null
+
+discrete:
+  embedding_dim: 8
+  repr_mode: learned_codebook
+
+replay:
+  per_task_capacity: 20000
+  max_stored_transitions: 40000
+  batch_size: 128
+  task_balanced: true
+  active_task_history_fraction: 0.5
+
+train:
+  gamma: 0.99
+  actor_lr: 0.0003
+  critic_lr: 0.0003
+  entropy_alpha: 0.02
+  backup_entropy: false
+  lambda_cal: 0.1
+  tau: 0.005
+  grad_clip: 10.0
+  random_steps_first_visit: 2000
+  repr_updates_first_visit: 1000
+  initial_data: self_collected_uniform
+  initial_offline_updates: 1000
+  offline_pretrain_once: true
+  target_samples: 2
+  calibration_samples: 10
+  update_every_online_steps: 4
+  stage_schedules:
+    strict:
+      - {game: Flappybird, steps: 50000}
+      - {game: Timberman, steps: 50000}
+    rehearsal:
+      - {game: Flappybird, steps: 30000}
+      - {game: Timberman, steps: 30000}
+      - {game: Flappybird, steps: 10000}
+      - {game: Timberman, steps: 10000}
+      - {game: Flappybird, steps: 10000}
+      - {game: Timberman, steps: 10000}
+
+eval:
+  primary_policy_mode: greedy
+  diagnostic_policy_mode: stochastic_target
+  validation_episodes: 10
+  test_episodes: 50
+  validation_seed_start: 100000
+  test_seed_start: 200000
+  flappy_pass_score: 10
+  timber_pass_score: 50
+  required_pass_rate: 0.8

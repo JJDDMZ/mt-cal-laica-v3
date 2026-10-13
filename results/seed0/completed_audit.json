@@ -1,0 +1,786 @@
+{
+  "checked_utc": "2026-10-06T13:32:33.896244+00:00",
+  "checks": {
+    "exit_0": true,
+    "episode_order": true,
+    "both_blocks_once": true,
+    "greedy_strict": true,
+    "format3_seed0": true,
+    "optimizer_steps_0": true,
+    "state_dict_unchanged": true,
+    "private_generators_unchanged": true,
+    "global_rng_unchanged": true,
+    "parameter_hash_unchanged": true,
+    "model_hash_unchanged": true,
+    "one_model_instance_evidence": true,
+    "Flappybird_raw_summary_match": true,
+    "Flappybird_tokens": true,
+    "Flappybird_absolute_relative_pass": true,
+    "Timberman_raw_summary_match": true,
+    "Timberman_tokens": true,
+    "Timberman_absolute_relative_pass": true,
+    "checkpoint_sha_unchanged": true,
+    "checkpoint_model_digest_matches_report": true,
+    "wemi_env_unchanged": true,
+    "game_source_sha256_unchanged": true,
+    "sources_unchanged": true,
+    "dependencies_unchanged": true
+  },
+  "all_checks_passed": true,
+  "checkpoint_sha256": "143d08ec214888b9e99370514ba3ed872b3ea692b39835420df9820f6b4f61ae",
+  "checkpoint_model_digest": "69ebddce6d78c85a2a8e63fcd9cee7a6e4167a01b77cd51fce6184b41386d721",
+  "report": "runs_v3/main/strict/seed0/eval_retry1/dual_game_greedy.json",
+  "games": {
+    "Flappybird": {
+      "episodes": 50,
+      "score_mean": 56.62,
+      "score_median": 57.0,
+      "score_std": 0.4853864439804639,
+      "score_max": 57.0,
+      "pass_count": 50,
+      "length_mean": 1000,
+      "terminations": {
+        "horizon": 50
+      },
+      "score_min": 56.0,
+      "st_baseline": 56.5,
+      "relative_ratio": 1.0021238938053096,
+      "all_lengths_1000": true
+    },
+    "Timberman": {
+      "episodes": 50,
+      "score_mean": 831.92,
+      "score_median": 832.0,
+      "score_std": 8.1014566591447,
+      "score_max": 852.0,
+      "pass_count": 50,
+      "length_mean": 1000,
+      "terminations": {
+        "horizon": 50
+      },
+      "score_min": 815.0,
+      "st_baseline": 674.36,
+      "relative_ratio": 1.2336437511121656,
+      "all_lengths_1000": true
+    }
+  },
+  "F_preT_mean": 56.38,
+  "F_postT_mean_ratio": 1.0042568286626463,
+  "raw_episodes": [
+    {
+      "game": "Flappybird",
+      "episode": 1,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 2,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 3,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 4,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 5,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 6,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 7,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 8,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 9,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 10,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 11,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 12,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 13,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 14,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 15,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 16,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 17,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 18,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 19,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 20,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 21,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 22,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 23,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 24,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 25,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 26,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 27,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 28,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 29,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 30,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 31,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 32,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 33,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 34,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 35,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 36,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 37,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 38,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 39,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 40,
+      "score": 56.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 41,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 42,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 43,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 44,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 45,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 46,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 47,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 48,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 49,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Flappybird",
+      "episode": 50,
+      "score": 57.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 1,
+      "score": 825.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 2,
+      "score": 837.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 3,
+      "score": 830.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 4,
+      "score": 851.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 5,
+      "score": 820.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 6,
+      "score": 831.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 7,
+      "score": 833.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 8,
+      "score": 831.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 9,
+      "score": 827.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 10,
+      "score": 835.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 11,
+      "score": 833.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 12,
+      "score": 828.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 13,
+      "score": 822.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 14,
+      "score": 827.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 15,
+      "score": 837.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 16,
+      "score": 827.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 17,
+      "score": 836.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 18,
+      "score": 840.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 19,
+      "score": 825.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 20,
+      "score": 848.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 21,
+      "score": 835.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 22,
+      "score": 824.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 23,
+      "score": 833.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 24,
+      "score": 836.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 25,
+      "score": 825.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 26,
+      "score": 835.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 27,
+      "score": 839.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 28,
+      "score": 831.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 29,
+      "score": 834.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 30,
+      "score": 828.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 31,
+      "score": 852.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 32,
+      "score": 841.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 33,
+      "score": 839.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 34,
+      "score": 815.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 35,
+      "score": 823.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 36,
+      "score": 827.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 37,
+      "score": 835.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 38,
+      "score": 832.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 39,
+      "score": 845.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 40,
+      "score": 832.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 41,
+      "score": 843.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 42,
+      "score": 833.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 43,
+      "score": 832.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 44,
+      "score": 825.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 45,
+      "score": 821.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 46,
+      "score": 826.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 47,
+      "score": 843.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 48,
+      "score": 823.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 49,
+      "score": 817.0,
+      "length": 1000,
+      "reason": "horizon"
+    },
+    {
+      "game": "Timberman",
+      "episode": 50,
+      "score": 829.0,
+      "length": 1000,
+      "reason": "horizon"
+    }
+  ],
+  "model_object_id": 6072299344,
+  "exit": {
+    "exit_code": 0,
+    "elapsed_seconds": 5521.056576967239,
+    "finished_utc": "2026-10-06T13:31:05.478518+00:00",
+    "checkpoint_sha256_before": {
+      "stage_Timberman.pt": "143d08ec214888b9e99370514ba3ed872b3ea692b39835420df9820f6b4f61ae",
+      "stage_Flappybird.pt": "4cacc9f0d0673b0c516a5e96d129c85a7e62bb07cb0ad9750c9194d4b3c70337"
+    },
+    "checkpoint_sha256_after": {
+      "stage_Timberman.pt": "143d08ec214888b9e99370514ba3ed872b3ea692b39835420df9820f6b4f61ae",
+      "stage_Flappybird.pt": "4cacc9f0d0673b0c516a5e96d129c85a7e62bb07cb0ad9750c9194d4b3c70337"
+    }
+  },
+  "conclusion": "Seed-0 engineering acceptance passed; stability across seeds not yet established"
+}
