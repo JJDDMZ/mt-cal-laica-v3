@@ -90,6 +90,42 @@ gh release download v3-seed0 --repo JJDDMZ/mt-cal-laica-v3 \
 python scripts/verify_results.py --checkpoint models/stage_Timberman.pt
 ```
 
+### 看模型玩游戏
+
+看游戏画面时，我用最终模型做短演示，每款游戏 2 局。两次启动都加载同一个 checkpoint，不更新模型；正式验收仍是前面记录的同实例 50+50 局评测。
+
+在仓库目录和已准备的 Conda 环境中，模型路径沿用前面的下载位置：
+
+```bash
+DEMO_CHECKPOINT="models/stage_Timberman.pt"
+```
+
+F 的演示命令：
+
+```bash
+python -u -m wemi_cal.run_rt --game Flappybird \
+  --evaluate "$DEMO_CHECKPOINT" --episodes 2 \
+  --steps 50000 --seed 0 --schedule strict --port 7911 \
+  --connect-timeout 900 --wemi-env-root WemiEnv \
+  --run-root "runs_v3/demos/F-$(date +%Y%m%d-%H%M%S)"
+```
+
+连接顺序：Python 提示“等待客户端”后，开发者工具打开 `wechat_games_rt/Flappybird`，编译一次。已经自动编译并连接时，不再重复编译。模型会自动控制小鸟，2 局约需 3～4 分钟。
+
+F 结束后关闭项目窗口，再运行 T 命令：
+
+```bash
+python -u -m wemi_cal.run_rt --game Timberman \
+  --evaluate "$DEMO_CHECKPOINT" --episodes 2 \
+  --steps 50000 --seed 0 --schedule strict --port 7911 \
+  --connect-timeout 900 --wemi-env-root WemiEnv \
+  --run-root "runs_v3/demos/T-$(date +%Y%m%d-%H%M%S)"
+```
+
+等待客户端时打开 `wechat_games_rt/Timberman`，连接后模型会自动选择左右砍树。两个游戏都无需手动控制。
+
+`--evaluate` 表示只评测；`--steps 50000` 匹配原训练配置，不会重新训练。演示结果按时间写入新目录，中途停止用 Ctrl+C。
+
 ### 重新训练
 
 实验按阶段手动运行，每阶段结束后再开始下一阶段。连接顺序是先启动 Python，等待 7911 服务，再打开对应的 `wechat_games_rt/` 游戏；每个新进程只编译一次客户端。
