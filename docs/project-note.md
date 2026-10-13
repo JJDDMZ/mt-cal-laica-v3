@@ -1,10 +1,10 @@
 ## 概述
 
-这个项目以 [WemiEnv](https://github.com/Ada9io/WemiEnv) 为交互平台，使用 [Cal-LAICA](https://github.com/bailei951/Cal-LAICA-Experiments) 的方法，让同一个模型先学 Flappybird，再学 Timberman。
+这次我以 [WemiEnv](https://github.com/Ada9io/WemiEnv) 为交互平台，使用 [Cal-LAICA](https://github.com/bailei951/Cal-LAICA-Experiments) 的方法，尝试让同一个模型先学 Flappybird，再学 Timberman。
 
-最终使用同一个 checkpoint[^1]，只加载一次模型，分别评测两个游戏，检查学会新游戏后是否还保留旧游戏的能力。
+实验结束后，我用同一个 checkpoint[^1]，只加载一次模型，分别评测两个游戏，检查学完新游戏后是否还保留旧游戏的能力。
 
-*这次要验证的是“一个模型连续学会两个游戏”，两个单任务模型只用于基线比较。*
+*我想验证的是“一个模型连续学会两个游戏”，两个单任务模型只作为比较基线。*
 
 ## 实现
 
@@ -24,11 +24,11 @@
 | OORB | 训练 T 时，每批取 F 历史 64 条 + T 在线 64 条 |
 | 恢复训练 | 连同优化器、回放和随机数状态一起恢复；初始离线训练只做一次 |
 
-论文研究迷宫中新增动作，本项目将方法适配到两个不同小游戏。固定 64/64 回放和动作概率校正属于项目适配；初始数据来自随机采集。
+论文研究的是迷宫中新增动作，我把这套方法用于两个不同小游戏。固定 64/64 回放和动作概率校正是项目中的适配；初始数据来自随机采集。
 
 ## 实验
 
-先分别训练两个单任务基线，各 50,000 步。主实验另起新模型，按严格顺序训练：
+我先分别训练两个单任务基线，各 50,000 步。主实验再从新模型开始，按以下顺序训练：
 
 ```text
 F 50,000 步 → F 门槛评测 → 从同一 checkpoint 恢复 T 50,000 步
@@ -57,7 +57,7 @@ F 50,000 步 → F 门槛评测 → 从同一 checkpoint 恢复 T 50,000 步
 
 ### 环境准备
 
-使用 Python 3.10，安装微信开发者工具。原实验使用 macOS ARM64、开发者工具 2.02.2608070、客户端基础库 3.17.3。
+这次的环境是 macOS ARM64、Python 3.10、微信开发者工具 2.02.2608070，客户端基础库为 3.17.3。环境准备命令如下：
 
 ```bash
 git clone https://github.com/JJDDMZ/mt-cal-laica-v3.git
@@ -75,13 +75,13 @@ python scripts/prepare_runtime.py --upstream external/WemiEnv
 
 ### 核验已有结果
 
-组会展示时，可以先复算已保存的 100 局记录：
+100 局原始记录已保存在仓库中，统计核验命令如下：
 
 ```bash
 python scripts/verify_results.py
 ```
 
-这个步骤只检查历史记录。若要检查发布模型的文件身份，可下载 checkpoint 并核对哈希：
+这一步复算已有记录，不运行游戏。最终 checkpoint 的下载和哈希核验命令如下：
 
 ```bash
 mkdir -p models
@@ -92,9 +92,9 @@ python scripts/verify_results.py --checkpoint models/stage_Timberman.pt
 
 ### 重新训练
 
-每条命令结束后，再手动执行下一条。先启动 Python，等待 7911 服务后，在开发者工具打开对应的 `wechat_games_rt/` 游戏，只编译一次。
+实验按阶段手动运行，每阶段结束后再开始下一阶段。连接顺序是先启动 Python，等待 7911 服务，再打开对应的 `wechat_games_rt/` 游戏；每个新进程只编译一次客户端。
 
-先完成单任务基线：
+单任务基线的训练和评测命令：
 
 ```bash
 # 打开 Flappybird，训练后为新的评测进程重新连接一次
@@ -106,7 +106,7 @@ python scripts/experiment.py baseline-t --seed 0
 python scripts/experiment.py eval-baseline-t --seed 0
 ```
 
-再进行主实验：
+主实验命令：
 
 ```bash
 # 切回 Flappybird
@@ -117,7 +117,7 @@ python scripts/experiment.py gate-f --seed 0
 python scripts/experiment.py strict-t --seed 0
 ```
 
-输出写入 `runs_v3/reproductions/`。可加 `--dry-run` 查看命令，不启动实验。
+复现输出目录为 `runs_v3/reproductions/`。`--dry-run` 只打印命令，不启动实验。
 
 ### 最终评测
 
@@ -125,13 +125,13 @@ python scripts/experiment.py strict-t --seed 0
 python scripts/experiment.py dual --seed 0
 ```
 
-先连接 F 客户端。完成 50 局并出现 T 提示后，保留同一个 Python 进程，再切换到 T 客户端。F 的完整 50 局约需 85～90 分钟，切换时的连接等待上限为 900 s。
+最终评测先连接 F 客户端，完成 50 局后再切换到 T。切换期间保留同一个 Python 进程，保证始终使用同一个模型。F 的完整 50 局约需 85～90 分钟，切换时的连接等待上限为 900 s。
 
-若直接重评已发布模型，使用仓库复现指南的“直接使用已发布模型”命令，并另建输出目录。
+已发布模型的直接评测命令记录在 `docs/reproduction.md`，重评结果写入新的输出目录。
 
 ## 后续工作
 
-这次完成了 seed-0 的工程验证。下一步是验证更多 seed、通过消融比较校准与回放的作用，再尝试第三个游戏。当前结果还不能证明跨 seed 稳定性或任意新游戏的泛化能力。
+这次完成了 seed-0 的双游戏验证。接下来我想验证更多 seed，再通过消融比较校准与回放的作用，之后尝试第三个游戏。目前还不能说明跨 seed 的稳定性，也不能说明任意新游戏的泛化能力。
 
 [^1]: Checkpoint 保存模型及训练状态，用于恢复训练或评测。这里使用 format 3，包含优化器、回放和随机数状态。
 
