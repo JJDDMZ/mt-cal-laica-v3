@@ -12,7 +12,7 @@ runtime-manifest.json
 runtime-source-manifest.json
 runs_v3/
 runs_cal/
-models/
+/models/
 *.pt
 *.pth
 project.private.config.json

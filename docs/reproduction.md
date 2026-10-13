@@ -108,3 +108,29 @@ python -u -m wemi_cal.evaluate_rt_dual \
 ```
 
 游戏切换方式与第 5 步相同。哈希一致证明文件身份一致，重新评测才检验新机器上的实际表现。
+
+## 7. 短演示：每个游戏 2 局
+
+查看游戏画面时，使用同一个最终模型分别演示两款游戏。以下命令各加载一次相同 checkpoint，不更新模型，也不作为 50+50 局同实例验收结果。
+
+先运行 F 命令，等待服务监听 7911，再在微信开发者工具打开 `wechat_games_rt/Flappybird`。新进程编译一次客户端，连接后游戏会自动运行；无需点击或按键。F 的 2 局预计约 3～4 分钟。
+
+```bash
+python -u -m wemi_cal.run_rt --game Flappybird \
+  --evaluate models/stage_Timberman.pt --episodes 2 \
+  --steps 50000 --seed 0 --schedule strict --port 7911 \
+  --connect-timeout 900 --wemi-env-root WemiEnv \
+  --run-root "runs_v3/demos/flappy-$(date +%Y%m%d-%H%M%S)"
+```
+
+F 结束后关闭 F 项目窗口，再运行 T 命令。等待监听提示后打开 `wechat_games_rt/Timberman`，连接方式相同。
+
+```bash
+python -u -m wemi_cal.run_rt --game Timberman \
+  --evaluate models/stage_Timberman.pt --episodes 2 \
+  --steps 50000 --seed 0 --schedule strict --port 7911 \
+  --connect-timeout 900 --wemi-env-root WemiEnv \
+  --run-root "runs_v3/demos/timber-$(date +%Y%m%d-%H%M%S)"
+```
+
+`--evaluate` 指定只做评测；`--steps 50000` 用于匹配原训练配置，不会重新训练 50,000 步。输出目录按时间新建，保留已有演示记录。中途停止使用终端的 Ctrl+C，再关闭游戏窗口。
